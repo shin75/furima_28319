@@ -9,4 +9,3 @@ def basic_auth
     username == 'admin' && password == '2222'
     end
   end
-end
