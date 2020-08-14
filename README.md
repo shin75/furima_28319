@@ -3,11 +3,14 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
+| Column       | Type   | Options     |
+| --------     | ------ | ----------- |
+| nickname     | string | null: false |
+| email        | string | null: false |
+| password     | string | null: false |
+| name         | string | null: false |
+| birthday     | string | null: false |
+| 
 
 ### Association
 
@@ -24,10 +27,6 @@
 | exhibitor         | string | null: false | 
 | description       | string | null: false | 
 | shipping_charges  | string | null: false | 
-| shipping origin   | string | null: false |
-| price             | string | null: false |
-| fee               | string | null: false |
-| profit            | string | null: false |
 | image             | string | null: false |
 | items_id          | string | null: false |
 
@@ -41,22 +40,24 @@
 | Column              | Type         | Options                        |
 | ------              | ----------   | ------------------------------ |
 | delivery_address    | string       | null: false, foreign_key: true |
-| payment             | integer      | null: false, foreign_key: true |
-| buyer_name          | string       | null: false, foreign_key: true |
 | phone number        | integer      | null: false, foreign_key: true |
+| postal code         | integer      | null: false, foreign_key: true |
+| municipalities      | string       | null: false, foreign_key: true |
+| address             | string       | null: false, foreign_key: true |
+| building number     | integer      | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :users
 
-## buy テーブル
+## buy（購入管理） テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| item_id | string     | null: false,                   |
+| item_id | string     | null: false, foreign_key: true |
 | user_id | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :users
-- belongs_to :items
+- belongs_to :buyer
