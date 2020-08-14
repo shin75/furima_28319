@@ -37,7 +37,7 @@
 - belongs_to :user
 - has_one :purchase, through: user
 
-## address テーブル
+## addresses テーブル
 
 | Column              | Type         | Options     |
 | ------              | ----------   | ----------  |
