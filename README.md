@@ -50,7 +50,7 @@
 
 ### Association
 
-- belongs_to :users
+- has_one :purchases
 
 ## purchases（購入管理） テーブル
 
