@@ -3,16 +3,19 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+ZENKAKU = /\A[ぁ-んァ-ン一-龥]/
+KANA = /\A[ァ-ヶー－]+\z/
+HANKAKU = /\A[a-zA-Z0-9]+\z/
         
   with_options presence:true do
     validates :name
-    validates :first_name, format: {with: /\A[ぁ-んァ-ン一-龥]/ , message:'first_nameを入力してください'}
-    validates :last_name, format: {with: /\A[ぁ-んァ-ン一-龥]/, message: 'last_nameを入力してください'}
-    validates :first_name_kana, format: {with: /\A[ァ-ヶー－]+\z/,message: 'はカタカナで入力してください'} 
-    validates :last_name_kana, format: {with: /\A[ァ-ヶー－]+\z/,message: 'はカタカナで入力してください'} 
+    validates :first_name, format: {with: ZENKAKU, message:'first_nameを入力してください'}
+    validates :last_name, format: {with: ZENKAKU, message: 'last_nameを入力してください'}
+    validates :first_name_kana, format: {with: KANA,message: 'はカタカナで入力してください'} 
+    validates :last_name_kana, format: {with: KANA,message: 'はカタカナで入力してください'} 
   end
 
-  validates :password, format: { with: /\A[a-zA-Z0-9]+\z/}
+  validates :password, format: { with: HANKAKU}
   validates :birth_day, presence: {message: 'を入力してください'}
+  validates :email, presence: {message: 'email must have @'}
 end
