@@ -1,8 +1,5 @@
 class Category < ActiveHash::Base
 
-
-  #validates :title, :text, :category, presence: true
-
   self.data = [
     {id: 1, name: 'レディース'},
     {id: 2, name: 'メンズ'},

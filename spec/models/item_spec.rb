@@ -67,7 +67,12 @@ describe '出品登録' do
     it "価格についての情報が必須であること" do
       @item.price = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price can't be blank")
+      expect(@item.errors.full_messages).to include("Price is not a number")
+    end
+    it "価格の範囲が、¥300~¥9,999,999の間であること" do
+      @item.price = 100
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
     end
   end
   end
