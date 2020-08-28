@@ -69,10 +69,16 @@ describe '出品登録' do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not a number")
     end
-    it "価格の範囲が、¥300~¥9,999,999の間であること" do
+    it "価格の範囲が、¥300より小さい値の場合出品できないこと" do
       @item.price = 100
       @item.valid?
       expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+    end
+
+    it "価格の範囲が、¥9,999,999より大きい値の場合出品できないこと" do
+      @item.price = 100000000
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price must be less than 9999999")
     end
   end
   end
