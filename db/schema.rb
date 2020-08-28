@@ -42,17 +42,19 @@ ActiveRecord::Schema.define(version: 2020_08_24_092217) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.bigint "user_id", null: false
+    t.string "item_name", default: "", null: false
     t.string "image", default: "", null: false
     t.text "description", null: false
-    t.string "category", default: "", null: false
-    t.string "status", default: "", null: false
+    t.string "category_id", default: "", null: false
+    t.string "status_id", default: "", null: false
     t.string "price", default: "", null: false
-    t.string "delivery_fee", default: "", null: false
-    t.string "prefecture", default: "", null: false
-    t.string "delivery_day", default: "", null: false
+    t.string "delivery_fee_id", default: "", null: false
+    t.string "prefecture_id", default: "", null: false
+    t.string "delivery_day_id", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "sells", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,4 +84,5 @@ ActiveRecord::Schema.define(version: 2020_08_24_092217) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "items", "users"
 end
