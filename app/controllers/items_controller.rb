@@ -26,8 +26,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy
-    redirect_to root_path
+    if
+     @item.destroy
+     redirect_to root_path
+    else
+     redirect_to :back and return true
+    end
   end
 
   private
@@ -39,9 +43,10 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
   def move_to_index
     unless user_signed_in?
       redirect_to action: :index
     end
-  end
+ end
 end
