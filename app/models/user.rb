@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          has_many :item
-         has_one :perchases
+         has_one :purchases
 ZENKAKU = /\A[ぁ-んァ-ン一-龥]/
 KANA = /\A[ァ-ヶー－]+\z/
 HANKAKU = /\A[a-zA-Z0-9]+\z/
