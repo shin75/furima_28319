@@ -13,7 +13,6 @@ PHONE = /\A\d{11}\z/
     validates :house_number
     validates :phone_number, format: {with: PHONE}
     end
-
     
   def save
     purchase = Purchase.create(item_id: item_id, user_id: user_id)

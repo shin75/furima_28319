@@ -16,6 +16,11 @@ RSpec.describe UserPurchase, type: :model do
     expect(@purchase).to be_valid
   end
 
+  it "建物番号がからのときでも購入ができること" do
+  @purchase.building_name = nil
+  expect(@purchase).to be_valid
+  end
+
   context '購入がうまく行かないとき'
   it "郵便番号が必須であること" do
     @purchase.postal_code = nil

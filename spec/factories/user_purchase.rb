@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :user_purchase do
 
     postal_code                 {"214-0001"}
+    building_name               {"グラン"}
     prefecture                  {1}
     city                        {"横浜市"}
     house_number                {"青山"}
